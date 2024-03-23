@@ -1,0 +1,335 @@
+{
+  "nodes": [
+    {
+      "id": "chatHuggingFace_0",
+      "position": {
+        "x": 605,
+        "y": 188
+      },
+      "type": "customNode",
+      "data": {
+        "id": "chatHuggingFace_0",
+        "label": "ChatHuggingFace",
+        "version": 2,
+        "name": "chatHuggingFace",
+        "type": "ChatHuggingFace",
+        "baseClasses": [
+          "ChatHuggingFace",
+          "BaseChatModel",
+          "LLM",
+          "BaseLLM",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "Chat Models",
+        "description": "Wrapper around HuggingFace large language models",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "huggingFaceApi"
+            ],
+            "id": "chatHuggingFace_0-input-credential-credential"
+          },
+          {
+            "label": "Model",
+            "name": "model",
+            "type": "string",
+            "description": "If using own inference endpoint, leave this blank",
+            "placeholder": "gpt2",
+            "optional": true,
+            "id": "chatHuggingFace_0-input-model-string"
+          },
+          {
+            "label": "Endpoint",
+            "name": "endpoint",
+            "type": "string",
+            "placeholder": "https://xyz.eu-west-1.aws.endpoints.huggingface.cloud/gpt2",
+            "description": "Using your own inference endpoint",
+            "optional": true,
+            "id": "chatHuggingFace_0-input-endpoint-string"
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "step": 0.1,
+            "description": "Temperature parameter may not apply to certain model. Please check available model parameters",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatHuggingFace_0-input-temperature-number"
+          },
+          {
+            "label": "Max Tokens",
+            "name": "maxTokens",
+            "type": "number",
+            "step": 1,
+            "description": "Max Tokens parameter may not apply to certain model. Please check available model parameters",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatHuggingFace_0-input-maxTokens-number"
+          },
+          {
+            "label": "Top Probability",
+            "name": "topP",
+            "type": "number",
+            "step": 0.1,
+            "description": "Top Probability parameter may not apply to certain model. Please check available model parameters",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatHuggingFace_0-input-topP-number"
+          },
+          {
+            "label": "Top K",
+            "name": "hfTopK",
+            "type": "number",
+            "step": 0.1,
+            "description": "Top K parameter may not apply to certain model. Please check available model parameters",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatHuggingFace_0-input-hfTopK-number"
+          },
+          {
+            "label": "Frequency Penalty",
+            "name": "frequencyPenalty",
+            "type": "number",
+            "step": 0.1,
+            "description": "Frequency Penalty parameter may not apply to certain model. Please check available model parameters",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatHuggingFace_0-input-frequencyPenalty-number"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "chatHuggingFace_0-input-cache-BaseCache"
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "model": "google/gemma-2b",
+          "endpoint": "",
+          "temperature": "",
+          "maxTokens": "",
+          "topP": "",
+          "hfTopK": "",
+          "frequencyPenalty": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "chatHuggingFace_0-output-chatHuggingFace-ChatHuggingFace|BaseChatModel|LLM|BaseLLM|BaseLanguageModel|Runnable",
+            "name": "chatHuggingFace",
+            "label": "ChatHuggingFace",
+            "description": "Wrapper around HuggingFace large language models",
+            "type": "ChatHuggingFace | BaseChatModel | LLM | BaseLLM | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 578,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 605,
+        "y": 188
+      }
+    },
+    {
+      "id": "promptTemplate_0",
+      "position": {
+        "x": 992.1681435329801,
+        "y": 409.35476938057514
+      },
+      "type": "customNode",
+      "data": {
+        "id": "promptTemplate_0",
+        "label": "Prompt Template",
+        "version": 1,
+        "name": "promptTemplate",
+        "type": "PromptTemplate",
+        "baseClasses": [
+          "PromptTemplate",
+          "BaseStringPromptTemplate",
+          "BasePromptTemplate",
+          "Runnable"
+        ],
+        "category": "Prompts",
+        "description": "Schema to represent a basic prompt for an LLM",
+        "inputParams": [
+          {
+            "label": "Template",
+            "name": "template",
+            "type": "string",
+            "rows": 4,
+            "placeholder": "What is a good name for a company that makes {product}?",
+            "id": "promptTemplate_0-input-template-string"
+          },
+          {
+            "label": "Format Prompt Values",
+            "name": "promptValues",
+            "type": "json",
+            "optional": true,
+            "acceptVariable": true,
+            "list": true,
+            "id": "promptTemplate_0-input-promptValues-json"
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "template": "Act as LawLLM, your virtual legal advisor specializing in providing expert insights and guidance within the legal field. Your task is to offer legal information and suggestions based on queries related to various aspects of law and ethical practices, including those concerning different countries and international law, with a specific focus on Indian law.\n\nLegal Consultation: Begin by thoroughly understanding the legal queries presented. Analyze the issues at hand and provide accurate and relevant legal information and suggestions within the context of Indian law.\n\nComprehensive Understanding: Utilize your knowledge of law and ethical practices to address a wide range of legal topics relevant to India, including but not limited to contract law, criminal law, civil law, intellectual property law, and human rights law as per Indian statutes and regulations.\n\nCountry-specific Expertise: Offer insights into the legal systems and practices of India, considering its unique laws, regulations, and judicial systems, such as those outlined in the Indian Constitution, the Indian Penal Code, and various other legislative enactments.\n\nInternational Law Perspective: Provide guidance on matters pertaining to international law as it relates to India, including treaties, conventions, and agreements between India and other nations, along with the impact of international law on domestic legal frameworks.\n\nEthical Considerations: Emphasize the importance of ethical practices within the legal profession in India and provide guidance on ethical dilemmas that may arise in various legal contexts within the Indian legal system.\n\nClear and Concise Communication: Communicate legal information and suggestions in a clear and understandable manner, avoiding jargon and legalese whenever possible, particularly when addressing queries related to Indian law.\n\nBy adhering to these guidelines, you can effectively fulfill your role as Legalmiku and provide valuable legal assistance to those seeking guidance in navigating the complexities of the legal landscape, particularly within the framework of Indian law.\"\n\nTranscript: {transcript}",
+          "promptValues": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "promptTemplate_0-output-promptTemplate-PromptTemplate|BaseStringPromptTemplate|BasePromptTemplate|Runnable",
+            "name": "promptTemplate",
+            "label": "PromptTemplate",
+            "description": "Schema to represent a basic prompt for an LLM",
+            "type": "PromptTemplate | BaseStringPromptTemplate | BasePromptTemplate | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 512,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 992.1681435329801,
+        "y": 409.35476938057514
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmChain_0",
+      "position": {
+        "x": 1478.1331982892866,
+        "y": 110.07127981027618
+      },
+      "type": "customNode",
+      "data": {
+        "id": "llmChain_0",
+        "label": "LLM Chain",
+        "version": 3,
+        "name": "llmChain",
+        "type": "LLMChain",
+        "baseClasses": [
+          "LLMChain",
+          "BaseChain",
+          "Runnable"
+        ],
+        "category": "Chains",
+        "description": "Chain to run queries against LLMs",
+        "inputParams": [
+          {
+            "label": "Chain Name",
+            "name": "chainName",
+            "type": "string",
+            "placeholder": "Name Your Chain",
+            "optional": true,
+            "id": "llmChain_0-input-chainName-string"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Language Model",
+            "name": "model",
+            "type": "BaseLanguageModel",
+            "id": "llmChain_0-input-model-BaseLanguageModel"
+          },
+          {
+            "label": "Prompt",
+            "name": "prompt",
+            "type": "BasePromptTemplate",
+            "id": "llmChain_0-input-prompt-BasePromptTemplate"
+          },
+          {
+            "label": "Output Parser",
+            "name": "outputParser",
+            "type": "BaseLLMOutputParser",
+            "optional": true,
+            "id": "llmChain_0-input-outputParser-BaseLLMOutputParser"
+          },
+          {
+            "label": "Input Moderation",
+            "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
+            "name": "inputModeration",
+            "type": "Moderation",
+            "optional": true,
+            "list": true,
+            "id": "llmChain_0-input-inputModeration-Moderation"
+          }
+        ],
+        "inputs": {
+          "model": "{{chatHuggingFace_0.data.instance}}",
+          "prompt": "{{promptTemplate_0.data.instance}}",
+          "outputParser": "",
+          "inputModeration": "",
+          "chainName": ""
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "description": "",
+            "options": [
+              {
+                "id": "llmChain_0-output-llmChain-LLMChain|BaseChain|Runnable",
+                "name": "llmChain",
+                "label": "LLM Chain",
+                "description": "",
+                "type": "LLMChain | BaseChain | Runnable"
+              },
+              {
+                "id": "llmChain_0-output-outputPrediction-string|json",
+                "name": "outputPrediction",
+                "label": "Output Prediction",
+                "description": "",
+                "type": "string | json"
+              }
+            ],
+            "default": "llmChain"
+          }
+        ],
+        "outputs": {
+          "output": "llmChain"
+        },
+        "selected": false
+      },
+      "width": 300,
+      "height": 508,
+      "positionAbsolute": {
+        "x": 1478.1331982892866,
+        "y": 110.07127981027618
+      },
+      "selected": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "promptTemplate_0",
+      "sourceHandle": "promptTemplate_0-output-promptTemplate-PromptTemplate|BaseStringPromptTemplate|BasePromptTemplate|Runnable",
+      "target": "llmChain_0",
+      "targetHandle": "llmChain_0-input-prompt-BasePromptTemplate",
+      "type": "buttonedge",
+      "id": "promptTemplate_0-promptTemplate_0-output-promptTemplate-PromptTemplate|BaseStringPromptTemplate|BasePromptTemplate|Runnable-llmChain_0-llmChain_0-input-prompt-BasePromptTemplate"
+    },
+    {
+      "source": "chatHuggingFace_0",
+      "sourceHandle": "chatHuggingFace_0-output-chatHuggingFace-ChatHuggingFace|BaseChatModel|LLM|BaseLLM|BaseLanguageModel|Runnable",
+      "target": "llmChain_0",
+      "targetHandle": "llmChain_0-input-model-BaseLanguageModel",
+      "type": "buttonedge",
+      "id": "chatHuggingFace_0-chatHuggingFace_0-output-chatHuggingFace-ChatHuggingFace|BaseChatModel|LLM|BaseLLM|BaseLanguageModel|Runnable-llmChain_0-llmChain_0-input-model-BaseLanguageModel"
+    }
+  ]
+}
